@@ -1,6 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import config.OwnerWebConfigRunner
+import config.OwnerWebConfigRunner;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
@@ -23,6 +23,8 @@ public class TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         new OwnerWebConfigRunner().runWebConfig();
+    }
+
 
     @AfterEach
     void addAttachments() {

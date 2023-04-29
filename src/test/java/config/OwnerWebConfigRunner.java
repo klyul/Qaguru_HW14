@@ -6,7 +6,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
-public class OwnerWebConfigRunner extends WebConfigRunner {
+public class OwnerWebConfigRunner  {
 
     static DefaultWebConfig config = ConfigFactory.create(DefaultWebConfig.class, System.getProperties());
 
