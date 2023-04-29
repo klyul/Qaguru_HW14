@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import config.OwnerWebConfigRunner
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
@@ -21,34 +22,7 @@ public class TestBase {
         // Для аллюр отчета
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        // Configuration.holdBrowserOpen = true;
-
-        Configuration.pageLoadStrategy = "eager";
-
-        logger.info("");
-        // Пример первой обработки параметра
-
-        logger.info("Sistem property browserSize: " + System.getProperty("browserSize"));
-        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-        logger.info("Set Configuration.browserSize browserSize: " + Configuration.browserSize + "\n");
-
-        // Пример второй обработки параметра
-
-        logger.info("System property remoteURL: " + System.getProperty("remoteURL"));
-        Configuration.remote = System.getProperty("remoteURL", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
-        logger.info("Set configuration.remote: " + Configuration.remote  + "\n");
-
-        // Конфигурация без указания в джобе:
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
-
-        Configuration.browserCapabilities = capabilities;
-        logger.info("Set configuration.browserCapabilities: " + Configuration.browserCapabilities  + "\n");
-
-    }
+        new OwnerWebConfigRunner().runWebConfig();
 
     @AfterEach
     void addAttachments() {
