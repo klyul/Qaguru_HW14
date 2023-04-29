@@ -12,5 +12,5 @@ public class TestBase {
 
         new OwnerWebConfigRunner().runWebConfig();
     }
-
+}
 
